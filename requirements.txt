@@ -1,0 +1,4 @@
+dagster==1.0.6
+dagit
+-e demo_integration
+-e dagster-project
