@@ -3,7 +3,6 @@ from dagster import (
     AssetMaterialization,
     Field,
     In,
-    MetadataValue,
     Noneable,
     Nothing,
     Out,
@@ -11,8 +10,8 @@ from dagster import (
     op,
 )
 
-from .resources import DEFAULT_POLL_INTERVAL
-from .types import MyOutput
+from demo_integration.resources import DEFAULT_POLL_INTERVAL
+from demo_integration.types import MyOutput
 
 
 @op(
