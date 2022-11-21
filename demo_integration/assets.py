@@ -1,5 +1,4 @@
 from dagster import asset
-from demo_integration.ops import project_op
 
 
 @asset(required_resource_keys={"my_resource"}, config_schema={"project_id": str})

@@ -1,13 +1,8 @@
-from dagster import job, repository, load_assets_from_modules, with_resources
-from dagster import AssetsDefinition, AssetKey, asset, Field, Noneable
+from dagster import AssetsDefinition, Field, Noneable, asset, repository, with_resources
 
-from dagster_project.ops import hello
-from demo_integration.ops import project_op
-from demo_integration.resources import my_resource
-from demo_integration import assets
 from demo_integration.consts import DEFAULT_POLL_INTERVAL
+from demo_integration.resources import my_resource
 from demo_integration.types import MyOutput
-
 
 API_KEY = "abc123"
 PROJ_ID = "i-love-uuids"
@@ -24,13 +19,13 @@ def make_project_asset(project_id: str) -> AssetsDefinition:
             "poll_interval": Field(
                 float,
                 default_value=DEFAULT_POLL_INTERVAL,
-                description="The time (in seconds) that will be waited between successive "
+                description="The time (in seconds) that will be waited between "
                 "polls.",
             ),
             "poll_timeout": Field(
                 Noneable(float),
                 default_value=None,
-                description="The maximum time that will waited before this operation is "
+                description="The maximum time to wait before this operation is "
                 "timed out. By default, this will never time out.",
             ),
         },
@@ -48,7 +43,6 @@ def make_project_asset(project_id: str) -> AssetsDefinition:
 project_assets = with_resources(
     definitions=[make_project_asset(PROJ_ID)],
     resource_defs={"my_resource": my_resource},
-    resource_config_by_key={PROJ_ID: {"poll_interval": 1, "poll_timeout": 10}},
 )
 
 
