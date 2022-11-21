@@ -1,4 +1,8 @@
-dagster==1.0.6
+dagster>=1.0.17
 dagit
+black
+isort
+pre-commit
+flake8
 -e demo_integration
 -e dagster-project

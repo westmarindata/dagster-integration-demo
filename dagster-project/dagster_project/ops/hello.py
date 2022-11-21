@@ -1,4 +1,5 @@
-from dagster import op, get_dagster_logger
+from dagster import get_dagster_logger, op
+
 
 @op
 def say_hello():

@@ -1,24 +1,22 @@
 import datetime
+import json
 import logging
 import time
-from importlib.metadata import PackageNotFoundError, version
 from typing import Any, Dict, Optional, cast
 from urllib.parse import urljoin
-import json
 
 import requests
 from dagster import Failure, Field, StringSource, get_dagster_logger, resource
 
-from .types import MyOutput, RunResponse, StatusResponse
-
 from .consts import (
+    API_BASE,
     COMPLETE,
     DEFAULT_POLL_INTERVAL,
     DEFAULT_POLL_TIMEOUT,
-    API_BASE,
     TERMINAL_STATUSES,
     VALID_STATUSES,
 )
+from .types import MyOutput, RunResponse, StatusResponse
 
 
 class MyResource:

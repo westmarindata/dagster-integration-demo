@@ -1,14 +1,6 @@
 import json
-from dagster import (
-    AssetMaterialization,
-    Field,
-    In,
-    Noneable,
-    Nothing,
-    Out,
-    Output,
-    op,
-)
+
+from dagster import AssetMaterialization, Field, In, Noneable, Nothing, Out, Output, op
 
 from demo_integration.resources import DEFAULT_POLL_INTERVAL
 from demo_integration.types import MyOutput
